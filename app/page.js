@@ -5,98 +5,19 @@ import { products } from '../lib/products';
 const whatsappNumber = '917903062818';
 const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi')}`;
 
-const navItems = products.map((product) => product.name);
-const primaryNavItems = navItems.slice(0, 7);
-const moreNavItems = navItems.slice(7);
-
-const collections = [
-  {
-    title: 'Sofa Fabrics',
-    copy: 'Durable textures and designer weaves for daily-use luxury seating.',
-    badge: 'Top Seller'
-  },
-  {
-    title: 'Curtain Studio',
-    copy: 'Sheers, blackout, and statement drapes curated for every light mood.',
-    badge: 'New Range'
-  },
-  {
-    title: 'Upholstery',
-    copy: 'Easy-clean performance fabric for living rooms, lobbies, and offices.',
-    badge: 'Commercial'
-  },
-  {
-    title: 'Mattress Fabrics',
-    copy: 'Comfort-first knitted and woven mattress covers with modern finishes.',
-    badge: 'Bulk Ready'
-  },
-  {
-    title: 'Bags & Footwear Textiles',
-    copy: 'Contemporary laminates and textured bases for fashion and utility lines.',
-    badge: 'Industry Use'
-  },
-  {
-    title: 'Wall & Blind Solutions',
-    copy: 'Roller blinds, panel blinds, and wall textures to frame any interior.',
-    badge: 'Expert Fit'
-  }
-];
-
-const process = [
-  {
-    step: '01',
-    title: 'Material Mapping',
-    text: 'We shortlist textures, colors, and technical specs based on your use-case and budget.'
-  },
-  {
-    step: '02',
-    title: 'Design Pairing',
-    text: 'Our team builds combinations for curtains, upholstery, and accessories in one proposal.'
-  },
-  {
-    step: '03',
-    title: 'Supply & Execution',
-    text: 'From retail pieces to wholesale lots, you get consistent quality with fast dispatch.'
-  }
-];
-
-const testimonials = [
-  {
-    quote:
-      'NH Decor helps us close projects faster because clients can visualize complete furnishing looks instantly.',
-    author: 'Interior Studio, Noida'
-  },
-  {
-    quote:
-      'The wholesale coordination is smooth. We source curtain and upholstery lines together without quality mismatch.',
-    author: 'Dealer Partner, Delhi NCR'
-  }
-];
-
 export default function HomePage() {
   return (
     <main>
       <section className="hero-wrap">
         <header className="site-header container">
-          <div className="logo">NH Decor</div>
+          <Link href="/" className="logo">
+            <Image src="/logo.png" alt="NH Decor logo" width={36} height={36} />
+            <span>NH Decor</span>
+          </Link>
           <nav className="main-nav">
             <ul className="nav-menu">
-              {primaryNavItems.map((item) => (
-                <li key={item}>
-                  <a href="#our-products">{item}</a>
-                </li>
-              ))}
-              <li className="nav-more">
-                <details>
-                  <summary>More</summary>
-                  <ul className="dropdown-menu">
-                    {moreNavItems.map((item) => (
-                      <li key={item}>
-                        <a href="#our-products">{item}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
+              <li>
+                <a href="#our-products">Our Products</a>
               </li>
             </ul>
           </nav>
@@ -123,8 +44,8 @@ export default function HomePage() {
             <article key={product.slug} className="product-tile">
               <div className="product-thumb">
                 <Image
-                  src="/images/product-placeholder.svg"
-                  alt={`${product.name} placeholder image`}
+                  src={product.image}
+                  alt={`${product.name} image`}
                   fill
                   sizes="(max-width: 760px) 100vw, (max-width: 1000px) 50vw, 25vw"
                 />
@@ -139,82 +60,6 @@ export default function HomePage() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="collection-section container">
-        <div className="section-heading">
-          <p className="eyebrow">Featured Categories</p>
-          <h2>Everything You Need to Furnish One Space or One Hundred</h2>
-        </div>
-        <div className="collection-grid">
-          {collections.map((item) => (
-            <article key={item.title} className="collection-card">
-              <span>{item.badge}</span>
-              <h3>{item.title}</h3>
-              <p>{item.copy}</p>
-              <a href="#">View Options</a>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="split-panel container">
-        <article className="panel intro">
-          <p className="eyebrow">Why NH Decor</p>
-          <h2>Traditional Variety + Modern Presentation + Faster Turnaround.</h2>
-          <p>
-            We combine broad furnishing inventory with design-led curation, transparent pricing flow, and project
-            coordination support. This creates a cleaner buying journey for homeowners, architects, retailers, and
-            bulk buyers.
-          </p>
-          <a href="#" className="cta-solid">
-            Start a Project
-          </a>
-        </article>
-        <article className="panel checklist">
-          <h3>Built for Performance</h3>
-          <ul>
-            <li>Dedicated support for retail and wholesale orders</li>
-            <li>Unified sampling for curtain + sofa + upholstery combinations</li>
-            <li>Quality checks for color consistency and fabric strength</li>
-            <li>Delivery planning aligned with project deadlines</li>
-          </ul>
-        </article>
-      </section>
-
-      <section className="process container">
-        <div className="section-heading">
-          <p className="eyebrow">How We Work</p>
-          <h2>From Fabric Selection to Final Dispatch</h2>
-        </div>
-        <div className="process-grid">
-          {process.map((item) => (
-            <article key={item.step}>
-              <span>{item.step}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="testimonials container">
-        {testimonials.map((item) => (
-          <article key={item.author}>
-            <p>{item.quote}</p>
-            <h3>{item.author}</h3>
-          </article>
-        ))}
-      </section>
-
-      <section className="contact-band container">
-        <div>
-          <p className="eyebrow">Let&apos;s Build Your Furnishing Plan</p>
-          <h2>Share your requirement and receive a curated quotation with matched collections.</h2>
-        </div>
-        <a href="#" className="cta-solid">
-          Contact NH Decor
-        </a>
       </section>
     </main>
   );

@@ -3,7 +3,7 @@
   --paper: #fffaf3;
   --ink: #1b2a2f;
   --muted: #536268;
-  --accent: #bc4d2f;
+  --accent: #ad757e;
   --accent-soft: #ebd3bf;
   --line: #d8c6b2;
   --slate: #20353f;
@@ -83,10 +83,17 @@ main {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-fraunces), serif;
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.logo img {
+  border-radius: 6px;
 }
 
 .main-nav {
@@ -167,7 +174,9 @@ main {
 }
 
 .cta-outline {
-  border: 1px solid var(--ink);
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
   padding: 0.7rem 1rem;
 }
 
@@ -325,7 +334,6 @@ main {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  border: 1px dashed #d7bfab;
   background: linear-gradient(145deg, #f6e6d6, #fdf5ec);
   overflow: hidden;
 }
@@ -364,7 +372,7 @@ main {
 }
 
 .tile-button.details {
-  background: var(--slate);
+  background: var(--accent);
   color: #fff;
 }
 
@@ -688,7 +696,23 @@ main {
   }
 
   .product-tile-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .product-tile {
+    padding: 0.8rem;
+    min-height: 220px;
+    gap: 0.6rem;
+  }
+
+  .product-tile h3 {
+    font-size: 1rem;
+  }
+
+  .product-tile p {
+    font-size: 0.82rem;
+    line-height: 1.45;
   }
 
   .contact-band {
@@ -704,5 +728,26 @@ main {
   .product-page-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: calc(100% - 1rem);
+  }
+
+  .product-tile-grid {
+    gap: 0.5rem;
+  }
+
+  .product-tile {
+    padding: 0.68rem;
+    min-height: 205px;
+  }
+
+  .tile-button {
+    width: 100%;
+    padding: 0.46rem 0.55rem;
+    font-size: 0.76rem;
   }
 }
